@@ -1,0 +1,47 @@
+/* Print styles: only the invoice is printed, never the form or app chrome */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .page,
+  .container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    background: #fff !important;
+    min-height: 0 !important;
+  }
+
+  #invoice-print {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 1.5cm 2cm !important;
+  }
+
+  /* Keep the brown header row, totals bar and gradient rule when printing */
+  #invoice-print,
+  #invoice-print * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #invoice-print table,
+  #invoice-print tr {
+    break-inside: avoid;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+}

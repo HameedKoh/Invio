@@ -1,0 +1,265 @@
+/* INVIO Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --off-white: #FAF8F5;
+  --off-white-light: #FFFFFF;
+  --off-white-dark: #F0EBE3;
+  --coffee-brown: #6F4E37;
+  --coffee-light: #8B6347;
+  --coffee-dark: #4A3323;
+  --coffee-accent: #C9A882;
+  --text: #2C1A0E;
+  --text-muted: #7A6050;
+  --text-light: #A08070;
+  --border: #D9CFC4;
+  --shadow: rgba(111, 78, 55, 0.12);
+  --success: #4CAF50;
+  --error: #D32F2F;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--off-white);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+}
+
+a {
+  color: var(--coffee-brown);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ── Input ─────────────────────────────────────────────────────────────── */
+.inp {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--off-white-light);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.inp:focus {
+  border-color: var(--coffee-brown);
+  box-shadow: 0 0 0 3px rgba(111, 78, 55, 0.12);
+}
+.inp::placeholder { color: var(--text-light); }
+.inp.error { border-color: var(--error); }
+
+/* ── Button ─────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--coffee-brown);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--coffee-dark); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--coffee-brown);
+  color: var(--coffee-brown);
+}
+.btn-outline:hover { background: var(--coffee-brown); color: #fff; }
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+}
+.btn-ghost:hover { background: var(--off-white-dark); }
+.btn-danger {
+  background: var(--error);
+  color: #fff;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Card ───────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--off-white-light);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 16px var(--shadow);
+  padding: 2rem;
+}
+
+/* ── Label / form group ─────────────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.error-msg {
+  font-size: 0.78rem;
+  color: var(--error);
+}
+
+/* ── Layout helpers ─────────────────────────────────────────────────────── */
+.page {
+  min-height: 100vh;
+  background: var(--off-white);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+
+/* ── Badge ──────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-draft   { background: #EDE9E3; color: var(--text-muted); }
+.badge-printed { background: #DDF0E0; color: #2E7D32; }
+.badge-paid    { background: #FFF3E0; color: #E65100; }
+
+/* ── Spinner ─────────────────────────────────────────────────────────────── */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 1.2rem; height: 1.2rem;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+.spinner-dark {
+  border-color: rgba(111,78,55,0.3);
+  border-top-color: var(--coffee-brown);
+}
+
+/* ── Divider ─────────────────────────────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5rem 0;
+}
+
+/* ── Toast ───────────────────────────────────────────────────────────────── */
+.toast-container {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  animation: slideIn 0.3s ease;
+  max-width: 320px;
+}
+.toast-success { background: #2E7D32; color: #fff; }
+.toast-error   { background: var(--error); color: #fff; }
+.toast-info    { background: var(--coffee-brown); color: #fff; }
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ── Navbar ──────────────────────────────────────────────────────────────── */
+.navbar {
+  background: var(--off-white-light);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--coffee-brown);
+  text-decoration: none;
+}
+.brand-logo:hover { text-decoration: none; }
+.brand-dot {
+  width: 8px; height: 8px;
+  background: var(--coffee-accent);
+  border-radius: 50%;
+  display: inline-block;
+}
